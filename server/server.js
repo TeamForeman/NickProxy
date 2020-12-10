@@ -1,4 +1,6 @@
+require('newrelic');
 const express = require('express');
+// const compression = require('compression');
 const morgan = require('morgan');
 const path = require('path');
 const router = require('./router');
@@ -8,6 +10,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(express.static(PUBLIC_DIR));
+// app.use(compression());
 
 // Handling asset requests for webpack bundles by passing off requests to the bundles router
 app.use('/bundles', router.bundles);
